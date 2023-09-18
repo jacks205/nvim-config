@@ -43,4 +43,5 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'},
         }
     }
+    use("tpope/vim-fugitive")
 end)

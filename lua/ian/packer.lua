@@ -6,6 +6,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use 'cljoly/telescope-repo.nvim'
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.3',
         -- or                            , branch = '0.1.x',
@@ -19,6 +20,8 @@ return require('packer').startup(function(use)
             ts_update()
         end,}
     use("nvim-treesitter/playground")
+    use('MDeiml/tree-sitter-markdown')
+    use('iamcco/markdown-preview.nvim')
     use("mbbill/undotree")
     use("folke/zen-mode.nvim")
     use {
@@ -44,4 +47,11 @@ return require('packer').startup(function(use)
         }
     }
     use("tpope/vim-fugitive")
+    use({"numirias/semshi", run = ":UpdateRemotePlugins"})
+    use("theprimeagen/harpoon")
+    use('HiPhish/jinja.vim')
+    use({
+        "aserowy/tmux.nvim",
+        config = function() return require("tmux").setup() end
+    })
 end)

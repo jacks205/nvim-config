@@ -7,7 +7,7 @@ lsp.ensure_installed({
     'lua_ls',
     'marksman',
     'jsonls',
-    'sourcery',
+    'pylsp',
     'sqlls',
     'yamlls',
     'cmake',

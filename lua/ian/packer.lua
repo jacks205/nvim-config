@@ -54,4 +54,5 @@ return require('packer').startup(function(use)
         "aserowy/tmux.nvim",
         config = function() return require("tmux").setup() end
     })
+    use 'sainnhe/everforest'
 end)

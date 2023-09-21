@@ -16,6 +16,7 @@ require("telescope").setup {
         },
         search_dirs = {
           "~/Development",
+          "~/.dotfiles",
         },
       },
     },

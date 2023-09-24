@@ -1,8 +1,11 @@
 local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
-
+lsp.preset({
+    name = 'recommended',
+    float_border = 'solid',
+})
 lsp.ensure_installed({
+    'bashls',
     'tsserver',
     'lua_ls',
     'marksman',
@@ -11,15 +14,17 @@ lsp.ensure_installed({
     'sqlls',
     'yamlls',
     'cmake',
+    'rust_analyzer',
 })
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
+  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-f>'] = cmp.mapping.scroll_docs(4),
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
@@ -30,7 +35,7 @@ cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+  mapping = cmp_mappings,
 })
 
 lsp.set_preferences({
@@ -45,7 +50,6 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
-
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)

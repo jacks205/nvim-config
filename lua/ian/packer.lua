@@ -47,7 +47,7 @@ return require('packer').startup(function(use)
         }
     }
     use("tpope/vim-fugitive")
-    use({"numirias/semshi", run = ":UpdateRemotePlugins"})
+--    use({"numirias/semshi", run = ":UpdateRemotePlugins"})
     use("theprimeagen/harpoon")
     use('HiPhish/jinja.vim')
     use({
@@ -55,4 +55,5 @@ return require('packer').startup(function(use)
         config = function() return require("tmux").setup() end
     })
     use 'sainnhe/everforest'
+    use 'psf/black'
 end)

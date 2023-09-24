@@ -29,3 +29,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+-- python
+vim.g.python3_host_prog = '/Users/ian.jackson/.pyenv/shims/python3'
+vim.g.python2_host_prog = '/Users/ian.jackson/.pyenv/shims/python2'

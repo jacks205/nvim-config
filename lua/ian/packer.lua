@@ -56,4 +56,15 @@ return require('packer').startup(function(use)
     })
     use 'sainnhe/everforest'
     use 'psf/black'
+    use 'theprimeagen/git-worktree.nvim'
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 end)

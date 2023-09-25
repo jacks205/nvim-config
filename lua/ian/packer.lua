@@ -54,7 +54,14 @@ return require('packer').startup(function(use)
         "aserowy/tmux.nvim",
         config = function() return require("tmux").setup() end
     })
-    use 'sainnhe/everforest'
+    use({
+        "neanias/everforest-nvim",
+        -- Optional; default configuration will be used if setup isn't called.
+        config = function()
+            require("everforest").setup()
+            require("everforest").load()
+        end,
+    })
     use 'psf/black'
     use 'theprimeagen/git-worktree.nvim'
     use {

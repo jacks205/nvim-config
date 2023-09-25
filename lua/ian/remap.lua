@@ -27,7 +27,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 
 -- Start new tmux session from folder list
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessionizer<CR>')
-vim.keymap.set('n', '<leader>f', vim.lsp.buf.format)
+vim.keymap.set({ 'n', 'v' }, '<leader>f', vim.lsp.buf.format)
 
 -- Exits interactive mode
 vim.keymap.set('i', '<C-c>', '<Esc>')
@@ -54,3 +54,6 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/config/nvim/lua/ian/packe
 
 -- Switch between files
 vim.keymap.set("n", "<Tab>", "<C-^>")
+
+-- Set delete to void register
+vim.keymap.set({ "n", "v" }, "<leader>d", "_d")

@@ -56,7 +56,6 @@ return require('packer').startup(function(use)
     })
     use({
         "neanias/everforest-nvim",
-        -- Optional; default configuration will be used if setup isn't called.
         config = function()
             require("everforest").setup()
             require("everforest").load()
@@ -74,4 +73,22 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+    use { 'nvim-treesitter/nvim-treesitter-context',
+        config = function ()
+           require'treesitter-context'.setup {
+               separator = '-'
+           }
+        end
+    }
+    use{ 'anuvyklack/pretty-fold.nvim',
+        config = function()
+            require('pretty-fold').setup()
+        end
+    }
+    use { 'm4xshen/autoclose.nvim',
+        config = function()
+            require('autoclose').setup()
+        end
+    }
+    use 'terryma/vim-multiple-cursors'
 end)

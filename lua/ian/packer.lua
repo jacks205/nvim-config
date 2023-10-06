@@ -6,11 +6,19 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    -- startup
+    use {
+        'goolord/alpha-nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+        end
+    }
     use 'cljoly/telescope-repo.nvim'
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.3',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use({ 'rose-pine/neovim', as = 'rose-pine' })
     use {
@@ -18,36 +26,52 @@ return require('packer').startup(function(use)
         run = function()
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
-        end,}
+        end, }
+    use { "folke/trouble.nvim", requires = { "nvim-tree/nvim-web-devicons", opt = true } }
     use("nvim-treesitter/playground")
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
+    use 'mfussenegger/nvim-dap'
     use('MDeiml/tree-sitter-markdown')
     use('iamcco/markdown-preview.nvim')
     use("mbbill/undotree")
     use("folke/zen-mode.nvim")
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    })
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
         requires = {
             -- LSP Support
-            {'neovim/nvim-lspconfig'},
-            {'williamboman/mason.nvim'},
-            {'williamboman/mason-lspconfig.nvim'},
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-buffer'},
-            {'hrsh7th/cmp-path'},
-            {'saadparwaiz1/cmp_luasnip'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-nvim-lua'},
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
 
             -- Snippets
-            {'L3MON4D3/LuaSnip'},
-            {'rafamadriz/friendly-snippets'},
+            { 'L3MON4D3/LuaSnip' },
+            { 'rafamadriz/friendly-snippets' },
         }
     }
-    use("tpope/vim-fugitive")
---    use({"numirias/semshi", run = ":UpdateRemotePlugins"})
+
+    --    use({"numirias/semshi", run = ":UpdateRemotePlugins"})
     use("theprimeagen/harpoon")
     use('HiPhish/jinja.vim')
     use({
@@ -61,8 +85,6 @@ return require('packer').startup(function(use)
             require("everforest").load()
         end,
     })
-    use 'psf/black'
-    use 'theprimeagen/git-worktree.nvim'
     use {
         'numToStr/Comment.nvim',
         config = function()
@@ -74,13 +96,13 @@ return require('packer').startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
     use { 'nvim-treesitter/nvim-treesitter-context',
-        config = function ()
-           require'treesitter-context'.setup {
-               separator = '-'
-           }
+        config = function()
+            require 'treesitter-context'.setup {
+                separator = '-'
+            }
         end
     }
-    use{ 'anuvyklack/pretty-fold.nvim',
+    use { 'anuvyklack/pretty-fold.nvim',
         config = function()
             require('pretty-fold').setup()
         end
@@ -90,5 +112,24 @@ return require('packer').startup(function(use)
             require('autoclose').setup()
         end
     }
-    use 'terryma/vim-multiple-cursors'
+    -- use 'terryma/vim-multiple-cursors'
+    use 'mg979/vim-visual-multi'
+    -- git
+    use 'theprimeagen/git-worktree.nvim'
+    use 'f-person/git-blame.nvim'
+    use("tpope/vim-fugitive")
+    use "airblade/vim-gitgutter"
+    -- golang
+    use { 'olexsmir/gopher.nvim',
+        requires = { -- dependencies
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+    }
+    use { 'dreamsofcode-io/nvim-dap-go',
+        config = function()
+            require 'dap-go'.setup()
+        end }
+    -- python
+    use { "nvimdev/guard.nvim", requires = { "nvimdev/guard-collection" } }
 end)

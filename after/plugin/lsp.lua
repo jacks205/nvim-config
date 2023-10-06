@@ -10,11 +10,13 @@ lsp.ensure_installed({
     'lua_ls',
     'marksman',
     'jsonls',
-    'pyright',
     'sqlls',
     'yamlls',
     'cmake',
     'rust_analyzer',
+    'gopls',
+    -- python
+    'pyright',
 })
 
 -- Fix Undefined global 'vim'
@@ -61,6 +63,16 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
+
+require('mason').setup({})
+require'mason-lspconfig'.setup {
+    ensure_installed = {
+        'black'
+    },
+    handlers = {
+        lsp.default_setup,
+    },
+}
 
 lsp.setup()
 

@@ -20,6 +20,8 @@ require("telescope").setup {
         search_dirs = {
           "~/Development",
           "/Users/ian.jackson",
+          "~/personal",
+          "$HOME",
         },
       },
     },

@@ -73,11 +73,10 @@ require'mason-lspconfig'.setup {
         lsp.default_setup,
     },
 }
-
+ 
 lsp.setup()
 
 vim.diagnostic.config({
     virtual_text = true
 })
 
-require'lspconfig'.sourcekit.setup{}

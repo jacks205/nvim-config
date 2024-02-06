@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
     use 'cljoly/telescope-repo.nvim'
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.3',
-        -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
     use({ 'rose-pine/neovim', as = 'rose-pine' })
@@ -28,7 +27,6 @@ return require('packer').startup(function(use)
             ts_update()
         end, }
     use { "folke/trouble.nvim", requires = { "nvim-tree/nvim-web-devicons", opt = true } }
-    use("nvim-treesitter/playground")
     use({
         "nvim-treesitter/nvim-treesitter-textobjects",
         after = "nvim-treesitter",
@@ -36,9 +34,7 @@ return require('packer').startup(function(use)
     })
     use 'mfussenegger/nvim-dap'
     use('MDeiml/tree-sitter-markdown')
-    use('iamcco/markdown-preview.nvim')
     use("mbbill/undotree")
-    use("folke/zen-mode.nvim")
     use({
         "kylechui/nvim-surround",
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -73,7 +69,7 @@ return require('packer').startup(function(use)
 
     --    use({"numirias/semshi", run = ":UpdateRemotePlugins"})
     use("theprimeagen/harpoon")
-    use('HiPhish/jinja.vim')
+
     use({
         "aserowy/tmux.nvim",
         config = function() return require("tmux").setup() end
@@ -102,23 +98,22 @@ return require('packer').startup(function(use)
             }
         end
     }
-    use { 'anuvyklack/pretty-fold.nvim',
-        config = function()
-            require('pretty-fold').setup()
-        end
-    }
+    -- use { 'anuvyklack/pretty-fold.nvim',
+    --     config = function()
+    --         require('pretty-fold').setup()
+    --     end
+    -- }
     use { 'm4xshen/autoclose.nvim',
         config = function()
             require('autoclose').setup()
         end
     }
-    -- use 'terryma/vim-multiple-cursors'
-    use 'mg979/vim-visual-multi'
+    use 'terryma/vim-multiple-cursors'
+    -- use 'mg979/vim-visual-multi'
     -- git
     use 'theprimeagen/git-worktree.nvim'
     use 'f-person/git-blame.nvim'
     use("tpope/vim-fugitive")
-    use "airblade/vim-gitgutter"
     -- golang
     use { 'olexsmir/gopher.nvim',
         requires = { -- dependencies
@@ -132,4 +127,7 @@ return require('packer').startup(function(use)
         end }
     -- python
     use { "nvimdev/guard.nvim", requires = { "nvimdev/guard-collection" } }
+    use('HiPhish/jinja.vim')
+    -- bazel
+    use {'bazelbuild/vim-bazel', requires = { 'google/vim-maktaba' } }
 end)

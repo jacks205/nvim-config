@@ -3,9 +3,9 @@ vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.smartindent = false
@@ -33,7 +33,7 @@ vim.opt.colorcolumn = "80"
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
-vim.g.netrw_localrmdir='rm -r'
+vim.g.netrw_localrmdir = 'rm -r'
 
 -- python
 vim.g.python3_host_prog = '/Users/ian.jackson/.pyenv/shims/python3'

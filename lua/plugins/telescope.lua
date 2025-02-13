@@ -9,17 +9,17 @@ return {
   config = function()
     require('telescope').setup {
       defaults = {
-        layout_config = {
-          prompt_position = 'top',
-          horizontal = {
-            width = 0.9,
-            height = 0.9,
-          },
-          vertical = {
-            width = 0.9,
-            height = 0.9,
-          },
-        },
+        -- layout_config = {
+        --   prompt_position = 'top',
+        --   horizontal = {
+        --     width = 0.9,
+        --     height = 0.9,
+        --   },
+        --   vertical = {
+        --     width = 0.9,
+        --     height = 0.9,
+        --   },
+        -- },
         layout_strategy = 'flex',
         sorting_strategy = 'ascending',
         prompt_prefix = '❯ ',
@@ -29,15 +29,15 @@ return {
         selection_strategy = 'reset',
       },
       pickers = {
-        find_files = {
-          theme = 'ivy'
-        },
+        -- find_files = {
+        --   theme = 'ivy'
+        -- },
         live_grep = {
           theme = 'ivy'
         },
-        git_files = {
-          theme = 'ivy'
-        },
+        -- git_files = {
+        --   theme = 'ivy'
+        -- },
         buffers = {
           theme = 'ivy'
         },
@@ -51,12 +51,24 @@ return {
     local telescope = require('telescope.builtin')
     vim.keymap.set('n', '<leader>ff', telescope.find_files)
     -- vim.keymap.set('n', '<leader>fg', telescope.live_grep)
+    vim.keymap.set('n', '<leader>fp', function()
+      telescope.find_files {
+        hidden = true,
+        no_ignore = true,
+      }
+    end)
     vim.keymap.set('n', '<C-p>', telescope.git_files)
     vim.keymap.set('n', '<leader>fb', telescope.buffers)
     vim.keymap.set('n', '<leader>fh', telescope.help_tags)
     vim.keymap.set('n', '<leader>en', function()
       telescope.find_files {
         cwd = vim.fn.stdpath('config')
+      }
+    end)
+    vim.keymap.set('n', '<leader>ed', function()
+      telescope.find_files {
+        cwd = vim.fn.expand('$HOME/.dotfiles'),
+        hidden = true,
       }
     end)
     vim.keymap.set("n", "<space>ep", function()

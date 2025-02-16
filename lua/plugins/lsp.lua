@@ -43,6 +43,10 @@ return {
           },
         },
       }
+      -- brew install pyright
+      lspconfig.pyright.setup {}
+      -- brew install bash-language-server
+      lspconfig.bashls.setup {}
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)

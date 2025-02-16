@@ -67,7 +67,7 @@ return {
     end)
     vim.keymap.set('n', '<leader>ed', function()
       telescope.find_files {
-        cwd = vim.fn.expand('$HOME/.dotfiles'),
+        cwd = vim.fn.expand('$HOME/Development/dotfiles'),
         hidden = true,
       }
     end)

@@ -41,5 +41,6 @@
   "vim-bazel": { "branch": "master", "commit": "31b0d5e4f51da1aeb56d65bf505a744e6de405de" },
   "vim-fugitive": { "branch": "master", "commit": "fcb4db52e7f65b95705aa58f0f2df1312c1f2df2" },
   "vim-maktaba": { "branch": "master", "commit": "fe95bb10f6bb250943a44632107f6a3d76ce5f28" },
-  "vim-multiple-cursors": { "branch": "master", "commit": "6456718e1d30b42c04b920c5413ca44f68f08759" }
+  "vim-multiple-cursors": { "branch": "master", "commit": "6456718e1d30b42c04b920c5413ca44f68f08759" },
+  "zen-mode.nvim": { "branch": "main", "commit": "863f150ca321b3dd8aa1a2b69b5f411a220e144f" }
 }

@@ -26,7 +26,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 
 -- Start new tmux session from folder list
--- vim.keymap.set('n', '<C-f>', '<cmd>silent iterm-newtab<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>f', vim.lsp.buf.format)
 
 -- Exits interactive mode

@@ -18,6 +18,7 @@ return {
       local lspconfig = require('lspconfig')
       local keymap = vim.keymap -- for conciseness
       local opts = { noremap = true, silent = true }
+      local nmap = require('ian.utils').nmap
 
       lspconfig.sourcekit.setup {
         capabilities = {
@@ -29,6 +30,7 @@ return {
         },
         cmd = { vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")) }
       }
+
       lspconfig.lua_ls.setup {}
       lspconfig.gopls.setup {
         cmd = { "gopls" },
@@ -64,6 +66,24 @@ return {
           end
         end,
       })
+
+      nmap('<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', '[R]e[n]ame')
+      nmap('<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', '[C]ode [A]ction')
+      nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+      nmap('<leader>gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+      nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+      nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+      nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+      nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+
+      -- See `:help K` for why this keymap
+      nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+      nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+      -- Lesser used LSP functionality
+      nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+      nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+      nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
     end,
   },
 }

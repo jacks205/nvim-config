@@ -7,6 +7,7 @@ return {
     { 'nvim-telescope/telescope-fzy-native.nvim', build = 'make' }
   },
   config = function()
+    local nmap = require('ian.utils').nmap
     require('telescope').setup {
       defaults = {
         -- layout_config = {
@@ -76,6 +77,7 @@ return {
         cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
       }
     end)
+    nmap('<leader>rr', "<cmd>Telescope keymaps<CR>", 'Show Keymaps [RR]')
 
     require "config.telescope.multigrep".setup()
   end

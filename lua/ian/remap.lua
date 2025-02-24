@@ -15,7 +15,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
---- Insert line above and below cursor
+-- Insert line above and below cursor
 vim.keymap.set('n', '<leader>gO', "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
 vim.keymap.set('n', '<leader>go', "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
 
@@ -44,6 +44,7 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- switch buffers
 vim.keymap.set("n", "<leader>k", "<cmd>bn<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>bp<CR>zz")
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>")
 
 -- make current file executable permissions
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
@@ -55,3 +56,4 @@ vim.keymap.set("n", "<Tab>", "<C-^>")
 
 -- Set delete to void register
 vim.keymap.set({ "n", "v" }, "<leader>d", "_d")
+vim.keymap.set({ "n", "v" }, "<leader>\"", "<cmd>reg \"012345\"<CR>")

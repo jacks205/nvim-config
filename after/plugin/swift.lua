@@ -9,7 +9,7 @@ lspconfig.sourcekit.setup {
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
   end,
   cmd = {
-    "/Applications/Xcode-16.2.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
+    "/Applications/Xcode-16.1.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
   },
   root_dir = function(filename, _)
     return lspconfig.util.find_git_ancestor(filename)

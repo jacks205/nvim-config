@@ -55,5 +55,5 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 vim.keymap.set("n", "<Tab>", "<C-^>")
 
 -- Set delete to void register
-vim.keymap.set({ "n", "v" }, "<leader>d", "_d")
+vim.keymap.set({ "n", "v" }, "d", '"_d')
 vim.keymap.set({ "n", "v" }, "<leader>\"", "<cmd>reg \"012345\"<CR>")

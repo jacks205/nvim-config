@@ -50,6 +50,16 @@ return {
       -- brew install bash-language-server
       lspconfig.bashls.setup {}
 
+      -- brew install terraform-ls
+      lspconfig.terraformls.setup {}
+
+      --Enable (broadcasting) snippet capability for completion
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+      lspconfig.jsonls.setup {
+        capabilities = capabilities,
+      }
+
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)

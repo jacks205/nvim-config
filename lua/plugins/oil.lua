@@ -1,6 +1,7 @@
 return {
   {
     'stevearc/oil.nvim',
+    vscode = false,
     opts = {},
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },

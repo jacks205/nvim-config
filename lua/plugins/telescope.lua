@@ -1,6 +1,7 @@
 -- plugins/telescope.lua:
 return {
   'nvim-telescope/telescope.nvim',
+  vscode = false,
   tag = '0.1.8',
   -- or                              , branch = '0.1.x',
   dependencies = { 'nvim-lua/plenary.nvim',
@@ -68,7 +69,7 @@ return {
     end)
     vim.keymap.set('n', '<leader>ed', function()
       telescope.find_files {
-        cwd = vim.fn.expand('$HOME/.dotfiles'),
+        cwd = vim.fn.expand('$HOME/Development/dotfiles'),
         hidden = true,
       }
     end)

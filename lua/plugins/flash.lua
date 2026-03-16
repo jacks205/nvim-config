@@ -1,5 +1,6 @@
 return {
   "folke/flash.nvim",
+  vscode = false,
   event = "VeryLazy",
   ---@type Flash.Config
   opts = {},

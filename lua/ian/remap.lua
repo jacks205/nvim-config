@@ -57,3 +57,8 @@ vim.keymap.set("n", "<Tab>", "<C-^>")
 -- Set delete to void register
 vim.keymap.set({ "n", "v" }, "d", '"_d')
 vim.keymap.set({ "n", "v" }, "<leader>\"", "<cmd>reg \"012345\"<CR>")
+
+-- Bazel
+vim.keymap.set("n", "<leader>bb", "<cmd>Bazel build<CR>", { desc = "[B]azel [B]uild" })
+vim.keymap.set("n", "<leader>bt", "<cmd>Bazel test<CR>", { desc = "[B]azel [T]est" })
+vim.keymap.set("n", "<leader>br", "<cmd>Bazel run<CR>", { desc = "[B]azel [R]un" })

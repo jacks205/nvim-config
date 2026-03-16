@@ -2,6 +2,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     lazy = false,
+    vscode = false,
     priority = 100,
     dependencies = {
       "onsails/lspkind-nvim",

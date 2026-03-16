@@ -3,6 +3,7 @@ return {
   {
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    vscode = false,
     config = function()
       require 'alpha'.setup(require 'alpha.themes.startify'.config)
     end,
@@ -10,6 +11,7 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose-pine',
+    vscode = false,
   },
   {
     'nvim-treesitter/nvim-treesitter',
@@ -29,7 +31,7 @@ return {
     config = function()
       local configs = require("nvim-treesitter.configs")
       configs.setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "swift", "starlark", "elixir", "heex", "javascript", "html" },
         sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
@@ -39,18 +41,19 @@ return {
   'mfussenegger/nvim-dap',
   'MDeiml/tree-sitter-markdown',
   'mbbill/undotree',
-  {
-    'kylechui/nvim-surround',
-    version = '*',
-    config = function()
-      require('nvim-surround').setup({})
-    end,
-  },
+  -- {
+  --   'kylechui/nvim-surround',
+  --   version = '*',
+  --   config = function()
+  --     require('nvim-surround').setup({})
+  --   end,
+  -- },
   'theprimeagen/harpoon',
   {
     'neanias/everforest-nvim',
+    vscode = false,
     config = function()
-      require('everforest').setup()
+      require('everforest').setup({})
       require('everforest').load()
     end,
   },
@@ -91,6 +94,7 @@ return {
   },
   {
     'dreamsofcode-io/nvim-dap-go',
+    vscode = false,
     config = function()
       require('dap-go').setup()
     end,
@@ -98,11 +102,14 @@ return {
   {
     'nvimdev/guard.nvim',
     dependencies = { 'nvimdev/guard-collection' },
+    vscode = false,
   },
   'HiPhish/jinja.vim',
   {
     'bazelbuild/vim-bazel',
     dependencies = { 'google/vim-maktaba' },
+    vscode = false,
   },
-  'github/copilot.vim',
+  -- Disabled inside Cursor/vscode-neovim where Cursor tab completion takes over
+  -- (not vim.g.vscode) and { 'github/copilot.vim' } or nil,
 }

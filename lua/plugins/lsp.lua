@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    vscode = false,
     dependencies = {
       {
         "folke/lazydev.nvim",

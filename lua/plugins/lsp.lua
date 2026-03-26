@@ -16,12 +16,9 @@ return {
       },
     },
     config = function()
-      local lspconfig = require('lspconfig')
-      local keymap = vim.keymap -- for conciseness
-      local opts = { noremap = true, silent = true }
       local nmap = require('ian.utils').nmap
 
-      lspconfig.sourcekit.setup {
+      vim.lsp.config('sourcekit', {
         capabilities = {
           workspace = {
             didChangeWatchedFiles = {
@@ -30,10 +27,9 @@ return {
           },
         },
         cmd = { vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")) }
-      }
+      })
 
-      lspconfig.lua_ls.setup {}
-      lspconfig.gopls.setup {
+      vim.lsp.config('gopls', {
         cmd = { "gopls" },
         filetypes = { "go", "gomod", "gowork", "gotmpl" },
         settings = {
@@ -45,21 +41,15 @@ return {
             },
           },
         },
-      }
-      -- brew install pyright
-      lspconfig.pyright.setup {}
-      -- brew install bash-language-server
-      lspconfig.bashls.setup {}
+      })
 
-      -- brew install terraform-ls
-      lspconfig.terraformls.setup {}
-
-      --Enable (broadcasting) snippet capability for completion
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-      lspconfig.jsonls.setup {
+      vim.lsp.config('jsonls', {
         capabilities = capabilities,
-      }
+      })
+
+      vim.lsp.enable({ 'sourcekit', 'gopls', 'pyright', 'bashls', 'terraformls', 'jsonls' })
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)

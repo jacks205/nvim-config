@@ -52,7 +52,9 @@ vim.keymap.set("n", "<space>x", ":.lua<CR>")
 vim.keymap.set("v", "<space>x", ":lua<CR>")
 
 -- Switch between files
-vim.keymap.set("n", "<Tab>", "<C-^>")
+if not vim.g.vscode then
+  vim.keymap.set("n", "<Tab>", "<C-^>")
+end
 
 -- Set delete to void register
 vim.keymap.set({ "n", "v" }, "d", '"_d')

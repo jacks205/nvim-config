@@ -49,7 +49,15 @@ return {
         capabilities = capabilities,
       })
 
-      vim.lsp.enable({ 'sourcekit', 'gopls', 'pyright', 'bashls', 'terraformls', 'jsonls' })
+      vim.lsp.enable({
+        'sourcekit',
+        'lua_ls',
+        'gopls',
+        'pyright', -- brew install pyright
+        'bashls', -- brew install bash-language-server
+        'terraformls', -- brew install terraform-ls
+        'jsonls',
+      })
 
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)

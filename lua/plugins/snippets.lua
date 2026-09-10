@@ -3,10 +3,12 @@ return {
     'L3MON4D3/LuaSnip',
     lazy = false,
     vscode = false,
-    config = function(opts)
+    config = function()
       local luasnip = require('luasnip')
-      luasnip.setup(opts)
-      require('luasnip.loaders.from_snipmate').load({ paths = "./snippets" })
+      luasnip.setup({})
+      require('luasnip.loaders.from_snipmate').load({
+        paths = vim.fn.stdpath('config') .. '/snippets',
+      })
     end,
   }
 }

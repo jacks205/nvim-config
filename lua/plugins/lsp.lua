@@ -30,8 +30,6 @@ return {
       })
 
       vim.lsp.config('gopls', {
-        cmd = { "gopls" },
-        filetypes = { "go", "gomod", "gowork", "gotmpl" },
         settings = {
           gopls = {
             completeUnimported = true,
@@ -63,6 +61,10 @@ return {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if not client then return end
+
+          if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+          end
 
           if client.supports_method('textDocument/formatting') then
             -- Format the current buffer on save

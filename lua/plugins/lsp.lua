@@ -29,6 +29,25 @@ return {
         cmd = { vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")) }
       })
 
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            workspace = {
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false,
+            },
+            library = {
+              "${3rd}/love2d/library",
+            },
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      })
+
       vim.lsp.config('gopls', {
         settings = {
           gopls = {
@@ -66,7 +85,7 @@ return {
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
           end
 
-          if client.supports_method('textDocument/formatting') then
+          if client:supports_method('textDocument/formatting') then
             -- Format the current buffer on save
             vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = args.buf,
